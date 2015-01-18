@@ -58,7 +58,7 @@ public class GoogleFitnessClientActivity extends ToolbarActivity {
         // Create the Google API Client
         client = new GoogleApiClient.Builder(this)
                 .addApi(Fitness.API)
-                .addScope(new Scope(Scopes.FITNESS_LOCATION_READ))
+                .addScope(new Scope(Scopes.FITNESS_ACTIVITY_READ))
                 .addConnectionCallbacks(
                         new GoogleApiClient.ConnectionCallbacks() {
 
@@ -116,7 +116,6 @@ public class GoogleFitnessClientActivity extends ToolbarActivity {
     protected void onStart() {
         super.onStart();
         // Connect to the Fitness API
-        Log.i(TAG, "Connecting...");
         client.connect();
     }
 
