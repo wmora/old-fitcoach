@@ -5,5 +5,9 @@
 
     <!-- Welcome -->
     <string name="welcome">Welcome!</string>
+    <string name="welcome_google_fit_description">GoogleFit lets you control your fitness data from multiple apps and devices</string>
+    <string name="welcome_google_fit_fitcoach_benefit">By connecting Google Fit and FitCoach, you will be able to be reminded if you haven\'t met your fitness goal for the day</string>
+    <string name="welcome_connect_to_google_fit">Connect to Google Fit</string>
+    <string name="welcome_dont_connect_to_google_fit">No thanks</string>
 
 </resources>
