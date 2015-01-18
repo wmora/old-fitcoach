@@ -116,7 +116,7 @@ public class GoogleFitnessClientActivity extends ToolbarActivity {
     protected void onStart() {
         super.onStart();
         if (shouldConnectOnStart()) {
-            connect();
+            googleApiClient.connect();
         }
     }
 
