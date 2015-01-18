@@ -6,4 +6,5 @@
     <!-- Default card margins, per the Android Design guidelines. -->
     <dimen name="card_margin">8dp</dimen>
     <dimen name="card_content_padding">16dp</dimen>
+    <dimen name="card_corner_radius">2dp</dimen>
 </resources>
