@@ -19,4 +19,8 @@ public class WelcomeActivity extends GoogleFitnessClientActivity {
         }
     }
 
+    @Override
+    protected boolean shouldConnectOnStart() {
+        return false;
+    }
 }

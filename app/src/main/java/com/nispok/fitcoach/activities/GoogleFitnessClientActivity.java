@@ -32,7 +32,7 @@ public class GoogleFitnessClientActivity extends ToolbarActivity {
     private static final String AUTH_PENDING = "AUTH_PENDING";
     private boolean authInProgress = false;
 
-    protected GoogleApiClient client = null;
+    protected GoogleApiClient googleApiClient = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class GoogleFitnessClientActivity extends ToolbarActivity {
      */
     private void buildFitnessClient() {
         // Create the Google API Client
-        client = new GoogleApiClient.Builder(this)
+        googleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(Fitness.API)
                 .addScope(new Scope(Scopes.FITNESS_ACTIVITY_READ))
                 .addConnectionCallbacks(
@@ -115,15 +115,26 @@ public class GoogleFitnessClientActivity extends ToolbarActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        if (shouldConnectOnStart()) {
+            connect();
+        }
+    }
+
+    /**
+     * Safely connects to Google Fitness API
+     */
+    protected void connect() {
         // Connect to the Fitness API
-        client.connect();
+        if (!googleApiClient.isConnecting() && !googleApiClient.isConnected()) {
+            googleApiClient.connect();
+        }
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        if (client.isConnected()) {
-            client.disconnect();
+        if (googleApiClient.isConnected()) {
+            googleApiClient.disconnect();
         }
     }
 
@@ -132,10 +143,7 @@ public class GoogleFitnessClientActivity extends ToolbarActivity {
         if (requestCode == REQUEST_OAUTH) {
             authInProgress = false;
             if (resultCode == RESULT_OK) {
-                // Make sure the app is not already connected or attempting to connect
-                if (!client.isConnecting() && !client.isConnected()) {
-                    client.connect();
-                }
+                connect();
             }
         }
     }
@@ -144,6 +152,14 @@ public class GoogleFitnessClientActivity extends ToolbarActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean(AUTH_PENDING, authInProgress);
+    }
+
+    /**
+     * @return whether this activity should automatically attempt to connect to Google's API during
+     * {@link #onStart()}
+     */
+    protected boolean shouldConnectOnStart() {
+        return true;
     }
 
 }
