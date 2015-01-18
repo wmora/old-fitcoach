@@ -9,4 +9,22 @@
         <item name="android:textColorSecondary">@color/secondary_text</item>
     </style>
 
+    <style name="AppTheme.Button" parent="AppTheme.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:layout_margin">4dp</item>
+    </style>
+
+    <style name="AppTheme.Button.Primary" parent="AppTheme.Button">
+        <item name="android:background">@color/primary</item>
+        <item name="android:textColor">@color/icons</item>
+    </style>
+
+    <style name="AppTheme.Button.Secondary" parent="AppTheme.Button">
+        <item name="android:background">@color/icons</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
 </resources>
