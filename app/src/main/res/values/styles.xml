@@ -13,9 +13,9 @@
     <style name="AppTheme.Button" parent="AppTheme.Button">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingLeft">8dp</item>
-        <item name="android:paddingRight">8dp</item>
-        <item name="android:layout_margin">4dp</item>
+        <item name="android:paddingLeft">@dimen/button_padding</item>
+        <item name="android:paddingRight">@dimen/button_padding</item>
+        <item name="android:layout_margin">@dimen/button_margin</item>
     </style>
 
     <style name="AppTheme.Button.Primary" parent="AppTheme.Button">
@@ -26,6 +26,19 @@
     <style name="AppTheme.Button.Secondary" parent="AppTheme.Button">
         <item name="android:background">@color/icons</item>
         <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <style name="AppTheme.Text">
+        <item name="android:layout_marginTop">@dimen/text_vertical_margin</item>
+        <item name="android:layout_marginBottom">@dimen/text_vertical_margin</item>
+    </style>
+
+    <style name="AppTheme.Text.Subhead" parent="AppTheme.Text">
+        <item name="android:textSize">@dimen/subhead_text_size</item>
+    </style>
+
+    <style name="AppTheme.Text.Body" parent="AppTheme.Text">
+        <item name="android:textSize">@dimen/body_text_size</item>
     </style>
 
 </resources>

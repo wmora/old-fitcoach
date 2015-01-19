@@ -7,4 +7,13 @@
     <dimen name="card_margin">8dp</dimen>
     <dimen name="card_content_padding">16dp</dimen>
     <dimen name="card_corner_radius">2dp</dimen>
+
+    <!-- Button -->
+    <dimen name="button_padding">8dp</dimen>
+    <dimen name="button_margin">4dp</dimen>
+
+    <!-- Typography -->
+    <dimen name="text_vertical_margin">8dp</dimen>
+    <dimen name="subhead_text_size">16sp</dimen>
+    <dimen name="body_text_size">14sp</dimen>
 </resources>
