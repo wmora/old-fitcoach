@@ -28,13 +28,13 @@
     </style>
 
     <style name="AppTheme.Button.Primary" parent="AppTheme.Button">
-        <item name="android:background">@color/primary</item>
-        <item name="android:textColor">@color/icons</item>
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:textColor">?android:textColorPrimaryInverse</item>
     </style>
 
     <style name="AppTheme.Button.Secondary" parent="AppTheme.Button">
         <item name="android:background">@color/icons</item>
-        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
     <style name="AppTheme.Text">
@@ -48,6 +48,35 @@
 
     <style name="AppTheme.Text.Body" parent="AppTheme.Text">
         <item name="android:textSize">@dimen/body_text_size</item>
+    </style>
+
+    <style name="AppTheme.FloatingLabel">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="android:padding">@dimen/content_padding</item>
+    </style>
+
+    <style name="AppTheme.InputLabel">
+        <item name="android:layout_marginTop">@dimen/label_top_margin</item>
+        <item name="android:layout_marginBottom">@dimen/label_bottom_margin</item>
+        <item name="android:textSize">@dimen/label_text_size</item>
+    </style>
+
+    <style name="AppTheme.InputLabel.Inverse" parent="AppTheme.InputLabel">
+        <item name="android:textColor">?android:textColorPrimaryInverse</item>
+    </style>
+
+    <style name="AppTheme.InputText">
+        <item name="android:layout_marginTop">@dimen/input_top_margin</item>
+        <item name="android:layout_marginBottom">@dimen/input_bottom_margin</item>
+    </style>
+
+    <style name="AppTheme.InputText.Big" parent="AppTheme.InputText">
+        <item name="android:textSize">@dimen/big_input_text_size</item>
+    </style>
+
+    <style name="AppTheme.InputText.Big.Inverse" parent="AppTheme.InputText.Big">
+        <item name="android:textColor">?android:textColorPrimaryInverse</item>
+        <item name="android:textColorHint">@color/primary_light</item>
     </style>
 
 </resources>

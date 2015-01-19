@@ -16,4 +16,21 @@
     <dimen name="text_vertical_margin">8dp</dimen>
     <dimen name="subhead_text_size">16sp</dimen>
     <dimen name="body_text_size">14sp</dimen>
+    <dimen name="label_text_size">12sp</dimen>
+    <dimen name="big_input_text_size">34sp</dimen>
+
+    <!-- Floating labels -->
+    <dimen name="content_padding">16dp</dimen>
+
+    <!-- Inputs -->
+    <dimen name="label_top_margin">8dp</dimen>
+    <dimen name="label_bottom_margin">4dp</dimen>
+    <dimen name="input_top_margin">@dimen/label_bottom_margin</dimen>
+    <dimen name="input_bottom_margin">16dp</dimen>
+
+    <!-- Elevation -->
+    <dimen name="resting_elevation_low">2dp</dimen>
+    <dimen name="resting_elevation_medium">4dp</dimen>
+    <dimen name="resting_elevation_high">8dp</dimen>
+
 </resources>
