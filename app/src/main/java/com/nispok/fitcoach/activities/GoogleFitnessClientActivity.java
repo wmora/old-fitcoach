@@ -66,6 +66,7 @@ public abstract class GoogleFitnessClientActivity extends ToolbarActivity {
 
                             @Override
                             public void onConnected(Bundle bundle) {
+                                Log.i(TAG, "Connected to Google");
                                 // Now you can make calls to the Fitness APIs.
                                 onConnectionSuccess();
                             }

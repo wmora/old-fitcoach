@@ -14,4 +14,9 @@
     <string name="settings_key">fitcoach_settings</string>
     <string name="settings_is_authorized_for_google_key">is_authorized_for_google</string>
 
+    <!-- Goal Setup -->
+    <string name="title_activity_google_fit_goal_setup">Goal Setup</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
 </resources>
