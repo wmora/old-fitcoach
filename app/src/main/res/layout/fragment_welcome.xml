@@ -43,6 +43,7 @@
                 android:text="@string/welcome_connect_to_google_fit" />
 
             <Button
+                android:id="@+id/dont_sign_in_button"
                 style="@style/AppTheme.Button.Secondary"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/welcome_dont_connect_to_google_fit" />
