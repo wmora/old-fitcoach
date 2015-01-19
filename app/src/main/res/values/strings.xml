@@ -10,4 +10,8 @@
     <string name="welcome_connect_to_google_fit">Connect to Google Fit</string>
     <string name="welcome_dont_connect_to_google_fit">No thanks</string>
 
+    <!-- Settings -->
+    <string name="settings_key">fitcoach_settings</string>
+    <string name="settings_is_authorized_for_google_key">is_authorized_for_google</string>
+
 </resources>

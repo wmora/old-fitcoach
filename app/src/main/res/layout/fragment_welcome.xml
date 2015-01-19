@@ -38,6 +38,7 @@
                 android:text="@string/welcome_google_fit_fitcoach_benefit" />
 
             <Button
+                android:id="@+id/sign_in_button"
                 style="@style/AppTheme.Button.Primary"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/welcome_connect_to_google_fit" />

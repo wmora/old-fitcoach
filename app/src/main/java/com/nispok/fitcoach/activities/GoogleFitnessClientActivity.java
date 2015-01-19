@@ -13,12 +13,14 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.fitness.Fitness;
 
+import static com.nispok.fitcoach.preferences.SettingsManager.setAuthorizedForGoogleFit;
+
 /**
  * Base Activity that handles connection with Google Fitness API. All activities that need to
  * interact with the API should extend from this. Connection code is the same as specified in
  * <a href="https://developers.google.com/fit/android/get-started">Getting Started on Android</a>
  */
-public class GoogleFitnessClientActivity extends ToolbarActivity {
+public abstract class GoogleFitnessClientActivity extends ToolbarActivity {
 
     private static final String TAG = GoogleFitnessClientActivity.class.getSimpleName();
 
@@ -64,9 +66,8 @@ public class GoogleFitnessClientActivity extends ToolbarActivity {
 
                             @Override
                             public void onConnected(Bundle bundle) {
-                                Log.i(TAG, "Connected!!!");
                                 // Now you can make calls to the Fitness APIs.
-                                // Put application specific code here.
+                                onConnectionSuccess();
                             }
 
                             @Override
@@ -91,6 +92,7 @@ public class GoogleFitnessClientActivity extends ToolbarActivity {
                                     // Show the localized error dialog
                                     GooglePlayServicesUtil.getErrorDialog(result.getErrorCode(),
                                             GoogleFitnessClientActivity.this, 0).show();
+                                    setAuthorizedForGoogleFit(false);
                                     return;
                                 }
                                 // The failure has a resolution. Resolve it.
@@ -130,6 +132,12 @@ public class GoogleFitnessClientActivity extends ToolbarActivity {
         }
     }
 
+    /**
+     * Called on a successful connection with Google. You should wait for this method to get called
+     * before making any calls to Fitness APIs
+     */
+    protected abstract void onConnectionSuccess();
+
     @Override
     protected void onStop() {
         super.onStop();
@@ -143,6 +151,7 @@ public class GoogleFitnessClientActivity extends ToolbarActivity {
         if (requestCode == REQUEST_OAUTH) {
             authInProgress = false;
             if (resultCode == RESULT_OK) {
+                setAuthorizedForGoogleFit(true);
                 connect();
             }
         }

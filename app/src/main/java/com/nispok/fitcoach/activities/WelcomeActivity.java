@@ -5,6 +5,8 @@ import android.os.Bundle;
 import com.nispok.fitcoach.R;
 import com.nispok.fitcoach.fragments.WelcomeFragment;
 
+import static com.nispok.fitcoach.preferences.SettingsManager.isAuthorizedForGoogleFit;
+
 public class WelcomeActivity extends GoogleFitnessClientActivity
         implements WelcomeFragment.WelcomeFragmentListener {
 
@@ -22,8 +24,18 @@ public class WelcomeActivity extends GoogleFitnessClientActivity
     }
 
     @Override
+    protected void onConnectionSuccess() {
+
+    }
+
+    @Override
     protected boolean shouldConnectOnStart() {
-        return false;
+        return isAuthorizedForGoogleFit();
+    }
+
+    @Override
+    public void onSignIn() {
+        googleApiClient.connect();
     }
 
     @Override

@@ -13,12 +13,16 @@ import com.nispok.fitcoach.R;
 
 public class WelcomeFragment extends Fragment {
 
+    private Button signInButton;
+    private Button dontSignInButton;
+
     private WelcomeFragmentListener listener;
 
     public interface WelcomeFragmentListener {
 
-        public void onSignInSkipped();
+        public void onSignIn();
 
+        public void onSignInSkipped();
     }
 
     @Override
@@ -41,11 +45,22 @@ public class WelcomeFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        setUpSignInButton(view);
         setUpDontSignInButton(view);
     }
 
+    private void setUpSignInButton(View view) {
+        signInButton = (Button) view.findViewById(R.id.sign_in_button);
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onSignIn();
+            }
+        });
+    }
+
     private void setUpDontSignInButton(View view) {
-        Button dontSignInButton = (Button) view.findViewById(R.id.dont_sign_in_button);
+        dontSignInButton = (Button) view.findViewById(R.id.dont_sign_in_button);
         dontSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
