@@ -18,10 +18,137 @@
 
         <EditText
             style="@style/AppTheme.InputText.Big.Inverse"
-            android:hint="@string/goal_name_hint"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="@string/goal_name_hint" />
 
     </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/list_top_padding"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/list_top_padding_height" />
+
+            <RelativeLayout
+                android:id="@+id/goal"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/two_line_item_height">
+
+                <ImageView
+                    android:id="@+id/goal_avatar"
+                    style="@style/AppTheme.List.Avatar"
+                    android:src="@mipmap/ic_trending_up" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toEndOf="@id/goal_avatar"
+                    android:layout_toRightOf="@id/goal_avatar"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/AppTheme.Text.Subhead"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="Goal" />
+
+                    <TextView
+                        style="@style/AppTheme.Text.Body.Secondary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="Secondary text" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/frequency"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/two_line_item_height">
+
+                <ImageView
+                    android:id="@+id/frequency_avatar"
+                    style="@style/AppTheme.List.Avatar"
+                    android:src="@mipmap/ic_schedule" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toEndOf="@id/frequency_avatar"
+                    android:layout_toRightOf="@id/frequency_avatar"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/AppTheme.Text.Subhead"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="Frequency" />
+
+                    <TextView
+                        style="@style/AppTheme.Text.Body.Secondary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="Everyday" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <View style="@style/AppTheme.List.Divider" />
+
+            <RelativeLayout
+                android:id="@+id/notifications"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/two_line_item_height">
+
+                <ImageView
+                    android:id="@+id/notifications_avatar"
+                    style="@style/AppTheme.List.Avatar"
+                    android:src="@mipmap/ic_notifications" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toEndOf="@id/notifications_avatar"
+                    android:layout_toRightOf="@id/notifications_avatar"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/AppTheme.Text.Subhead"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="5:00 PM" />
+
+                    <TextView
+                        style="@style/AppTheme.Text.Body.Secondary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="2"
+                        android:text="Hey there! You haven\'t completed your goal today. What are you waiting for?" />
+                </LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
