@@ -33,4 +33,11 @@
     <dimen name="resting_elevation_medium">4dp</dimen>
     <dimen name="resting_elevation_high">8dp</dimen>
 
+    <!-- Lists -->
+    <dimen name="list_top_padding_height">8dp</dimen>
+    <dimen name="two_line_item_height">72dp</dimen>
+    <dimen name="avatar_width">72dp</dimen>
+    <dimen name="avatar_height">72dp</dimen>
+    <dimen name="avatar_padding">16dp</dimen>
+
 </resources>

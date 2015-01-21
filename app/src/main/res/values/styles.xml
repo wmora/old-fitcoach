@@ -82,4 +82,19 @@
         <item name="android:textColorHint">@color/primary_light</item>
     </style>
 
+    <style name="AppTheme.List" />
+
+    <style name="AppTheme.List.Avatar" parent="AppTheme.List">
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_width">@dimen/avatar_width</item>
+        <item name="android:layout_height">@dimen/avatar_height</item>
+        <item name="android:padding">@dimen/avatar_padding</item>
+    </style>
+
+    <style name="AppTheme.List.Divider" parent="AppTheme.List">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginLeft">@dimen/avatar_width</item>
+        <item name="android:background">@color/divider</item>
+    </style>
 </resources>
