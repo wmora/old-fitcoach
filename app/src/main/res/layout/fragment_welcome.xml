@@ -29,12 +29,16 @@
                 style="@style/AppTheme.Text.Body"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/text_vertical_margin"
+                android:layout_marginTop="@dimen/text_vertical_margin"
                 android:text="@string/welcome_google_fit_description" />
 
             <TextView
                 style="@style/AppTheme.Text.Body"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/text_vertical_margin"
+                android:layout_marginTop="@dimen/text_vertical_margin"
                 android:text="@string/welcome_google_fit_fitcoach_benefit" />
 
             <Button
