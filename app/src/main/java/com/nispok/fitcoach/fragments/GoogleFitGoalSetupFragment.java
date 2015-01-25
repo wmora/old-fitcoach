@@ -88,7 +88,7 @@ public class GoogleFitGoalSetupFragment extends Fragment {
 
     private void updateGoalView() {
         TextView goalValue = (TextView) goalView.findViewById(R.id.goal_value);
-        goalValue.setText(String.valueOf(goal.getValue()));
+        goalValue.setText(goal.getValueText());
     }
 
     public void onGoalChanged(Goal goal) {

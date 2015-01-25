@@ -66,4 +66,8 @@ public class Goal implements Serializable {
     public void setFrequency(GoalFrequency frequency) {
         this.frequency = frequency;
     }
+
+    public String getValueText() {
+        return value + " " + type.getUnitText();
+    }
 }
