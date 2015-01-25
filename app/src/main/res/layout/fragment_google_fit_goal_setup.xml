@@ -21,7 +21,10 @@
             style="@style/AppTheme.InputText.Big.Inverse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/goal_name_hint" />
+            android:hint="@string/goal_name_hint"
+            android:imeOptions="actionDone"
+            android:inputType="textCapWords"
+            android:singleLine="true" />
 
     </LinearLayout>
 
