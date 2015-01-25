@@ -75,6 +75,41 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/goal_type"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/two_line_item_height">
+
+                <View
+                    android:id="@+id/goal_type_avatar"
+                    style="@style/AppTheme.List.Avatar"
+                    android:src="" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toEndOf="@id/goal_type_avatar"
+                    android:layout_toRightOf="@id/goal_type_avatar"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/AppTheme.Text.Subhead"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@string/goal_type_label" />
+
+                    <TextView
+                        android:id="@+id/goal_type_value"
+                        style="@style/AppTheme.Text.Body.Secondary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/goal_type_value" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:id="@+id/frequency"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/two_line_item_height">

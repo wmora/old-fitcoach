@@ -8,6 +8,7 @@ public class Goal implements Serializable {
 
     private String name = "";
     private int value = 0;
+    private GoalType goalType = GoalType.ACTIVE_TIME;
 
     /**
      * @param name the name of this {@link com.nispok.fitcoach.models.Goal}
@@ -35,5 +36,19 @@ public class Goal implements Serializable {
      */
     public int getValue() {
         return value;
+    }
+
+    /**
+     * @return type of goal
+     */
+    public GoalType getGoalType() {
+        return goalType;
+    }
+
+    /**
+     * @param goalType type of goal
+     */
+    public void setGoalType(GoalType goalType) {
+        this.goalType = goalType;
     }
 }

@@ -21,6 +21,8 @@
     <string name="goal_name_label">Name</string>
     <string name="goal_name_hint">Active Time</string>
     <string name="goal_label">Goal</string>
+    <string name="goal_type_label">Type</string>
+    <string name="goal_type_value">Active Time</string>
 
     <!-- GoalDialogFragment -->
     <string name="goal_hint">80</string>
