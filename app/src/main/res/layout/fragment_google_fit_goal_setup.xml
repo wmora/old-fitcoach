@@ -65,12 +65,12 @@
                         android:text="@string/goal_label" />
 
                     <TextView
+                        android:id="@+id/goal_value"
                         style="@style/AppTheme.Text.Body.Secondary"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
-                        android:maxLines="1"
-                        android:text="Secondary text" />
+                        android:maxLines="1" />
                 </LinearLayout>
             </RelativeLayout>
 

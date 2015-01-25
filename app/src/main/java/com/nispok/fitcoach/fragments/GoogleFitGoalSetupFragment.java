@@ -1,6 +1,7 @@
 package com.nispok.fitcoach.fragments;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,14 +10,42 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.nispok.fitcoach.R;
+import com.nispok.fitcoach.models.Goal;
 
 public class GoogleFitGoalSetupFragment extends Fragment {
+
+    public static final String TAG = GoogleFitGoalSetupFragment.class.getSimpleName();
+
+    private static final String SAVED_GOAL = "SAVED_GOAL";
+
+    private GoogleFitGoalSetupFragmentInterface listener;
+    private View goalView;
+
+    private Goal goal = new Goal();
+
+    public interface GoogleFitGoalSetupFragmentInterface {
+        public void onGoalValueSelected(Goal goal);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            listener = (GoogleFitGoalSetupFragmentInterface) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString() + " must implement " + TAG);
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            goal = (Goal) savedInstanceState.getSerializable(SAVED_GOAL);
+        }
         return inflater.inflate(R.layout.fragment_google_fit_goal_setup, container, false);
     }
 
@@ -24,6 +53,7 @@ public class GoogleFitGoalSetupFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setFloatingLabelElevation(view);
+        setUpGoalView(view);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -33,5 +63,32 @@ public class GoogleFitGoalSetupFragment extends Fragment {
         }
         LinearLayout nameFloatingLabel = (LinearLayout) view.findViewById(R.id.name_floating_label);
         nameFloatingLabel.setElevation(getResources().getDimension(R.dimen.resting_elevation_low));
+    }
+
+    public void setUpGoalView(View view) {
+        goalView = view.findViewById(R.id.goal);
+        goalView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onGoalValueSelected(goal);
+            }
+        });
+        updateGoalView();
+    }
+
+    private void updateGoalView() {
+        TextView goalValue = (TextView) goalView.findViewById(R.id.goal_value);
+        goalValue.setText(String.valueOf(goal.getValue()));
+    }
+
+    public void onGoalChanged(Goal goal) {
+        this.goal = goal;
+        updateGoalView();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(SAVED_GOAL, goal);
     }
 }
