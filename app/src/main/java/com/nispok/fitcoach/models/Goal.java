@@ -9,6 +9,7 @@ public class Goal implements Serializable {
     private String name = "";
     private int value = 0;
     private GoalType type = GoalType.ACTIVE_TIME;
+    private GoalFrequency frequency = GoalFrequency.DAILY;
 
     /**
      * @param name the name of this {@link com.nispok.fitcoach.models.Goal}
@@ -50,5 +51,19 @@ public class Goal implements Serializable {
      */
     public void setType(GoalType type) {
         this.type = type;
+    }
+
+    /**
+     * @return frequency for this {@link com.nispok.fitcoach.models.Goal}
+     */
+    public GoalFrequency getFrequency() {
+        return frequency;
+    }
+
+    /**
+     * @param frequency frequency for this {@link com.nispok.fitcoach.models.Goal}
+     */
+    public void setFrequency(GoalFrequency frequency) {
+        this.frequency = frequency;
     }
 }
