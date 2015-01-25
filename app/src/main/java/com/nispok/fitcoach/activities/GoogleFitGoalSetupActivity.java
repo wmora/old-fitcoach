@@ -62,7 +62,7 @@ public class GoogleFitGoalSetupActivity extends GoogleFitnessClientActivity
     @Override
     public void onGoalChanged(Goal goal) {
         GoogleFitGoalSetupFragment f = (GoogleFitGoalSetupFragment) getSupportFragmentManager().
-                        findFragmentByTag(GoogleFitGoalSetupFragment.TAG);
+                findFragmentByTag(GoogleFitGoalSetupFragment.TAG);
 
         if (f != null) {
             f.onGoalChanged(goal);
