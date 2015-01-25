@@ -2,6 +2,6 @@ package com.nispok.fitcoach.models;
 
 public enum GoalType {
 
-    ACTIVE_TIME;
+    ACTIVE_TIME
 
 }
