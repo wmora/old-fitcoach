@@ -22,6 +22,7 @@
     <style name="AppTheme.Button" parent="AppTheme.Button">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:minWidth">@dimen/button_min_width</item>
         <item name="android:paddingLeft">@dimen/button_padding</item>
         <item name="android:paddingRight">@dimen/button_padding</item>
         <item name="android:layout_margin">@dimen/button_margin</item>
@@ -37,8 +38,22 @@
         <item name="android:textColor">?android:textColorPrimary</item>
     </style>
 
+    <style name="AppTheme.Button.Dialog" parent="AppTheme.Button">
+        <item name="android:gravity">center</item>
+        <item name="android:height">@dimen/button_height</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="AppTheme.Text">
         <item name="android:textColor">?android:textColorPrimary</item>
+    </style>
+
+    <style name="AppTheme.Text.Title" parent="AppTheme.Text">
+        <item name="android:textSize">@dimen/title_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">@dimen/label_bottom_margin</item>
     </style>
 
     <style name="AppTheme.Text.Subhead" parent="AppTheme.Text">
