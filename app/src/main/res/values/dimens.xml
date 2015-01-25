@@ -11,9 +11,12 @@
     <!-- Button -->
     <dimen name="button_padding">8dp</dimen>
     <dimen name="button_margin">4dp</dimen>
+    <dimen name="button_height">36dp</dimen>
+    <dimen name="button_min_width">48dp</dimen>
 
     <!-- Typography -->
     <dimen name="text_vertical_margin">8dp</dimen>
+    <dimen name="title_text_size">20sp</dimen>
     <dimen name="subhead_text_size">16sp</dimen>
     <dimen name="body_text_size">14sp</dimen>
     <dimen name="label_text_size">12sp</dimen>
@@ -39,5 +42,13 @@
     <dimen name="avatar_width">72dp</dimen>
     <dimen name="avatar_height">72dp</dimen>
     <dimen name="avatar_padding">16dp</dimen>
+
+    <!-- Dialogs -->
+    <dimen name="dialog_top_padding">24dp</dimen>
+    <dimen name="dialog_left_padding">24dp</dimen>
+    <dimen name="dialog_right_padding">24dp</dimen>
+    <dimen name="dialog_bottom_padding">8dp</dimen>
+    <dimen name="dialog_bottom_padding_height">8dp</dimen>
+    <dimen name="dialog_button_area_height">48dp</dimen>
 
 </resources>
