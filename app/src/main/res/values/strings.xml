@@ -33,4 +33,7 @@
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
 
+    <!-- Home -->
+    <string name="title_activity_home">FitCoach</string>
+
 </resources>
