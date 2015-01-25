@@ -32,6 +32,14 @@ public class GoalDialogFragment extends DialogFragment {
         public void onGoalChanged(Goal goal);
     }
 
+    /**
+     * Builds a {@link com.nispok.fitcoach.dialogs.GoalDialogFragment} with a
+     * {@link com.nispok.fitcoach.models.Goal}. All instances of this class should be created with
+     * this method
+     *
+     * @param goal {@link com.nispok.fitcoach.models.Goal} to be edited
+     * @return an instance of {@link com.nispok.fitcoach.dialogs.GoalDialogFragment}
+     */
     public static GoalDialogFragment newInstance(Goal goal) {
         GoalDialogFragment fragment = new GoalDialogFragment();
 
@@ -107,6 +115,10 @@ public class GoalDialogFragment extends DialogFragment {
         });
     }
 
+    /**
+     * Basic {@link android.text.TextWatcher} that validates if the input value is not empty and
+     * greater than zero
+     */
     private class GoalInputTextWatcher implements TextWatcher {
 
         @Override
