@@ -33,6 +33,7 @@ public class GoogleFitGoalSetupFragment extends Fragment {
 
     public interface GoogleFitGoalSetupFragmentInterface {
         public void onGoalValueSelected(Goal goal);
+        public void onGoalSetupFinished();
     }
 
     @Override
@@ -79,6 +80,8 @@ public class GoogleFitGoalSetupFragment extends Fragment {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_save) {
+            goal.save();
+            listener.onGoalSetupFinished();
             return true;
         }
 

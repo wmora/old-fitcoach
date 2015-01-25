@@ -1,5 +1,6 @@
 package com.nispok.fitcoach.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.nispok.fitcoach.R;
@@ -32,6 +33,14 @@ public class GoogleFitGoalSetupActivity extends GoogleFitnessClientActivity
     public void onGoalValueSelected(Goal goal) {
         GoalDialogFragment fragment = GoalDialogFragment.newInstance(goal);
         fragment.show(getSupportFragmentManager(), GoalDialogFragment.TAG);
+    }
+
+    @Override
+    public void onGoalSetupFinished() {
+        Intent intent = new Intent();
+        intent.setClass(getApplicationContext(), HomeActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     @Override

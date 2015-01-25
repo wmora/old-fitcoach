@@ -151,7 +151,7 @@
             <View style="@style/AppTheme.List.Divider" />
 
             <RelativeLayout
-                android:id="@+id/notifications"
+                android:id="@+id/notification_time"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/two_line_item_height">
 
@@ -160,11 +160,33 @@
                     style="@style/AppTheme.List.Avatar"
                     android:src="@mipmap/ic_notifications" />
 
-                <LinearLayout
-                    android:layout_width="fill_parent"
+                <TextView
+                    android:id="@+id/notification_time_value"
+                    style="@style/AppTheme.Text.Subhead"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_toEndOf="@id/notifications_avatar"
                     android:layout_toRightOf="@id/notifications_avatar"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:text="7:00 PM" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/notification_message"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/two_line_item_height">
+
+                <ImageView
+                    android:id="@+id/notification_message_avatar"
+                    style="@style/AppTheme.List.Avatar" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toEndOf="@id/notification_message_avatar"
+                    android:layout_toRightOf="@id/notification_message_avatar"
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
@@ -174,15 +196,14 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:text="5:00 PM" />
+                        android:text="@string/goal_notification_message_label" />
 
                     <TextView
                         style="@style/AppTheme.Text.Body.Secondary"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
-                        android:maxLines="2"
-                        android:text="Hey there! You haven\'t completed your goal today. What are you waiting for?" />
+                        android:maxLines="2" />
                 </LinearLayout>
             </RelativeLayout>
 
