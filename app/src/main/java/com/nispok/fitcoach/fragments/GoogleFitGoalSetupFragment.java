@@ -6,9 +6,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -23,6 +26,7 @@ public class GoogleFitGoalSetupFragment extends Fragment {
 
     private GoogleFitGoalSetupFragmentInterface listener;
     private View goalView;
+    private EditText goalNameView;
 
     private Goal goal = new Goal();
 
@@ -53,6 +57,7 @@ public class GoogleFitGoalSetupFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setFloatingLabelElevation(view);
+        setUpGoalNameView(view);
         setUpGoalView(view);
     }
 
@@ -63,6 +68,11 @@ public class GoogleFitGoalSetupFragment extends Fragment {
         }
         LinearLayout nameFloatingLabel = (LinearLayout) view.findViewById(R.id.name_floating_label);
         nameFloatingLabel.setElevation(getResources().getDimension(R.dimen.resting_elevation_low));
+    }
+
+    private void setUpGoalNameView(View view) {
+        goalNameView = (EditText) view.findViewById(R.id.goal_name);
+        goalNameView.setText(goal.getName());
     }
 
     public void setUpGoalView(View view) {
@@ -90,5 +100,24 @@ public class GoogleFitGoalSetupFragment extends Fragment {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putSerializable(SAVED_GOAL, goal);
+    }
+
+    private class GoalNameTextWatcher implements TextWatcher {
+
+        @Override
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            // Nothing to do here
+        }
+
+        @Override
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+            // Nothing to do here
+        }
+
+        @Override
+        public void afterTextChanged(Editable s) {
+            goal.setName(s.toString());
+        }
+
     }
 }

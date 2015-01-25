@@ -17,6 +17,7 @@
             android:text="@string/goal_name_label" />
 
         <EditText
+            android:id="@+id/goal_name"
             style="@style/AppTheme.InputText.Big.Inverse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,8 +82,7 @@
 
                 <View
                     android:id="@+id/goal_type_avatar"
-                    style="@style/AppTheme.List.Avatar"
-                    android:src="" />
+                    style="@style/AppTheme.List.Avatar" />
 
                 <LinearLayout
                     android:layout_width="fill_parent"
