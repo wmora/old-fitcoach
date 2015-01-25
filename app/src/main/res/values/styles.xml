@@ -42,7 +42,7 @@
         <item name="android:gravity">center</item>
         <item name="android:height">@dimen/button_height</item>
         <item name="android:textAllCaps">true</item>
-        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="android:textColor">@color/dialog_button_color</item>
         <item name="android:textStyle">bold</item>
     </style>
 
