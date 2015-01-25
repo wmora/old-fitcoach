@@ -6,9 +6,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -50,6 +51,9 @@ public class GoogleFitGoalSetupFragment extends Fragment {
         if (savedInstanceState != null) {
             goal = (Goal) savedInstanceState.getSerializable(SAVED_GOAL);
         }
+
+        setHasOptionsMenu(true);
+
         return inflater.inflate(R.layout.fragment_google_fit_goal_setup, container, false);
     }
 
@@ -59,6 +63,26 @@ public class GoogleFitGoalSetupFragment extends Fragment {
         setFloatingLabelElevation(view);
         setUpGoalNameView(view);
         setUpGoalView(view);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_google_fit_goal_setup, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_save) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -102,22 +126,4 @@ public class GoogleFitGoalSetupFragment extends Fragment {
         outState.putSerializable(SAVED_GOAL, goal);
     }
 
-    private class GoalNameTextWatcher implements TextWatcher {
-
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            // Nothing to do here
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-            // Nothing to do here
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            goal.setName(s.toString());
-        }
-
-    }
 }
