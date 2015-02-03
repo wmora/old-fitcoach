@@ -1,5 +1,15 @@
 apply plugin: 'com.android.application'
 
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.github.jcandksolutions.gradle:android-unit-test:2.1.1'
+    }
+}
+
 android {
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
