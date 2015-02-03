@@ -27,6 +27,14 @@ dependencies {
 
 apply plugin: 'android-unit-test'
 
+androidUnitTest {
+    sourceSets {
+        test {
+            resources.srcDirs = ['src/test/res']
+        }
+    }
+}
+
 dependencies {
     testCompile 'junit:junit:4.10'
     testCompile 'org.robolectric:robolectric:2.4'
