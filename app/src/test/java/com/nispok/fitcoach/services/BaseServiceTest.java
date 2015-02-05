@@ -14,18 +14,20 @@ import static junit.framework.Assert.assertNotNull;
 public class BaseServiceTest {
 
     private static class TestBaseService extends BaseService {
-        // Used for testing base class
+        public Context getContext() {
+            return context;
+        }
     }
 
     @Test
     public void testGetContextShouldReturnContext() {
-        Context context = TestBaseService.getContext();
+        Context context = new TestBaseService().getContext();
         assertNotNull(context);
     }
 
     @Test
     public void testContextShouldNotBeActivityContext() {
-        Context context = TestBaseService.getContext();
+        Context context = new TestBaseService().getContext();
         assertFalse(context instanceof Activity);
     }
 

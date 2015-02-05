@@ -13,7 +13,7 @@ public class SystemServiceTest {
 
     @Test
     public void testGetAlarmSystemServiceShouldReturnAlarmManager() {
-        AlarmManager alarmManager = SystemService.getAlarmSystemService();
+        AlarmManager alarmManager = SystemService.getInstance().getAlarmSystemService();
         assertNotNull(alarmManager);
     }
 
