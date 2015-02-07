@@ -1,21 +1,24 @@
 package com.nispok.fitcoach.models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Goal implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    private String id = "";
     private String name = "";
     private int value = 0;
     private GoalType type = GoalType.ACTIVE_TIME;
     private GoalFrequency frequency = GoalFrequency.DAILY;
-    private List<GoalNotification> notifications = new ArrayList<>();
+    private GoalNotification notification = new GoalNotification();
 
-    public Goal() {
-        notifications.add(new GoalNotification());
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     /**
@@ -78,12 +81,12 @@ public class Goal implements Serializable {
         return value + " " + type.getUnitText();
     }
 
-    public List<GoalNotification> getNotifications() {
-        return notifications;
+    public GoalNotification getNotification() {
+        return notification;
     }
 
-    public void setNotifications(List<GoalNotification> notifications) {
-        this.notifications = notifications;
+    public void setNotification(GoalNotification notifications) {
+        this.notification = notifications;
     }
 
     /**

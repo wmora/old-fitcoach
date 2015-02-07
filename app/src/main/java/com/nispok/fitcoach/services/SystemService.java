@@ -1,6 +1,7 @@
 package com.nispok.fitcoach.services;
 
 import android.app.AlarmManager;
+import android.app.NotificationManager;
 import android.content.Context;
 
 public class SystemService extends BaseService {
@@ -22,5 +23,9 @@ public class SystemService extends BaseService {
      */
     public AlarmManager getAlarmSystemService() {
         return (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+    }
+
+    public NotificationManager getNotificationSystemService() {
+        return (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
     }
 }

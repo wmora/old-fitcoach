@@ -1,5 +1,6 @@
 package com.nispok.fitcoach.receivers;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.content.WakefulBroadcastReceiver;
@@ -18,8 +19,9 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
      */
     @Override
     public void onReceive(Context context, Intent intent) {
-        Intent service = new Intent(context, NotificationService.class);
-        startWakefulService(context, service);
+        ComponentName comp = new ComponentName(context.getPackageName(),
+                NotificationService.class.getName());
+        startWakefulService(context, (intent.setComponent(comp)));
     }
 
 }
