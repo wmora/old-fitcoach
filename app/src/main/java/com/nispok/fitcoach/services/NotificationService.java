@@ -1,6 +1,7 @@
 package com.nispok.fitcoach.services;
 
 import android.app.IntentService;
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -39,7 +40,8 @@ public class NotificationService extends IntentService {
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
                 .setContentTitle(getString(R.string.app_name))
-                .setContentText(goal.getNotification().getMessage());
+                .setContentText(goal.getNotification().getMessage())
+                .setDefaults(Notification.DEFAULT_ALL);
 
         PendingIntent dummyIntent = PendingIntent.getActivity(this, 0, new Intent(),
                 PendingIntent.FLAG_UPDATE_CURRENT);
