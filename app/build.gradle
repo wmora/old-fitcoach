@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+def loadProperty(name) {
+    hasProperty(name) ? "${getProperty(name)}" : ""
+}
+
 buildscript {
     repositories {
         mavenCentral()
@@ -21,8 +25,19 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    signingConfigs {
+        release {
+            storeFile file(loadProperty("NISPOK_RELEASE_KEYSTORE_PATH") ?: signingConfigs.debug.storeFile)
+            storePassword loadProperty("NISPOK_RELEASE_PASSWORD") ?: signingConfigs.debug.storePassword
+            keyAlias loadProperty("NISPOK_RELEASE_KEY_ALIAS") ?: signingConfigs.debug.keyAlias
+            keyPassword loadProperty("NISPOK_RELEASE_KEY_PASSWORD") ?: signingConfigs.debug.keyPassword
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
