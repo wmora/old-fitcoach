@@ -29,7 +29,9 @@
             android:label="@string/title_activity_google_fit_goal_setup" />
         <activity
             android:name=".activities.HomeActivity"
-            android:label="@string/title_activity_home"></activity>
+            android:label="@string/title_activity_home" />
+
+        <service android:name=".services.NotificationService" />
     </application>
 
 </manifest>
