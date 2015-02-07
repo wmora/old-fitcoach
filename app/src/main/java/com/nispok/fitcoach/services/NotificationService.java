@@ -20,9 +20,20 @@ public class NotificationService extends IntentService {
         super(NotificationService.class.getName());
     }
 
+    /**
+     * Creates a notification based on the {@link com.nispok.fitcoach.models.Goal} included in the
+     * {@link android.content.Intent}. The {@link android.app.Notification} will not open the app
+     * and can only be dismissed
+     *
+     * @param intent
+     */
     @Override
     protected void onHandleIntent(Intent intent) {
         Goal goal = (Goal) intent.getExtras().getSerializable(FitCoachIntent.Extra.GOAL);
+
+        if (goal == null) {
+            return;
+        }
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
