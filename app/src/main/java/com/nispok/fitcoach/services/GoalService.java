@@ -16,6 +16,11 @@ public class GoalService extends BaseService {
         return instance;
     }
 
+    /**
+     * Creates a goal of drinking water everyday and schedules a notification at a fixed time
+     *
+     * @return the created {@link com.nispok.fitcoach.models.Goal}
+     */
     public Goal createWaterGoal() {
         Goal waterGoal = new Goal();
         waterGoal.setId("water_goal");
