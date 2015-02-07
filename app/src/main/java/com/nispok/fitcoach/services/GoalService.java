@@ -29,7 +29,7 @@ public class GoalService extends BaseService {
         time.setHour(14);
         time.setMinute(0);
         goalNotification.setTime(time);
-        goalNotification.setMessage("Don't forget to drink 2 liters of water today!");
+        goalNotification.setMessage("Don't forget to drink 2l of water today!");
         AlarmService.getInstance().createAlarm(FitCoachIntent.RequestCode.WATER_REMINDER, waterGoal);
         return waterGoal;
     }
