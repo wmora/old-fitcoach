@@ -11,6 +11,7 @@ public class GoalNotification implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Time time;
+    private String title;
     private String message;
 
     public GoalNotification() {
@@ -24,6 +25,14 @@ public class GoalNotification implements Serializable {
 
     public void setTime(Time time) {
         this.time = time;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getMessage() {

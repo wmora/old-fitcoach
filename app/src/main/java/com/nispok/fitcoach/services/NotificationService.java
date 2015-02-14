@@ -39,7 +39,7 @@ public class NotificationService extends IntentService {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
-                .setContentTitle(getString(R.string.app_name))
+                .setContentTitle(goal.getNotification().getTitle())
                 .setContentText(goal.getNotification().getMessage())
                 .setDefaults(Notification.DEFAULT_ALL);
 
