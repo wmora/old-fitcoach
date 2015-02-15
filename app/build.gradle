@@ -1,16 +1,23 @@
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
 
-def loadProperty(name) {
-    hasProperty(name) ? "${getProperty(name)}" : ""
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+def loadProperty(name, defaultValue = "") {
+    hasProperty(name) ? "${getProperty(name)}" : defaultValue
 }
 
 buildscript {
     repositories {
         mavenCentral()
+        maven { url 'https://maven.fabric.io/public' }
     }
 
     dependencies {
         classpath 'com.github.jcandksolutions.gradle:android-unit-test:2.1.1'
+        classpath 'io.fabric.tools:gradle:1.+'
     }
 }
 
@@ -42,12 +49,41 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    applicationVariants.all { variant ->
+        // add a generated crashlytics properties file with an API key
+        createCrashlyticsProperties(project, variant)
+    }
+}
+
+def createCrashlyticsProperties(Project project, variant) {
+    // Valid key of non-existing organization on Crashlytics to make local building possible
+    def crashlyticsKey = loadProperty("FITCOACH_CRASHLYTICS_API_KEY", "b246d46ecb3f6b64f3ce24c0c2055cc4fd101c93")
+
+    File fabricProperties = new File("${project.projectDir.absolutePath}/crashlytics.properties")
+    def variantSuffix = variant.name.capitalize()
+    def generateResourcesTask = project.tasks.getByName("fabricGenerateResources${variantSuffix}")
+    def generatePropertiesTask = task("fabricGenerateProperties${variantSuffix}") << {
+        Properties properties = new Properties()
+        println "...copying apiKey for ${variant.name}"
+        properties.put("apiKey", crashlyticsKey.toString())
+        properties.store(new FileWriter(fabricProperties), "")
+    }
+    generateResourcesTask.dependsOn generatePropertiesTask
+    def assembleTask = project.tasks.getByName("assemble${variantSuffix}")
+    assembleTask.doLast {
+        println "...removing crashlytics.properties"
+        fabricProperties.delete()
+    }
 }
 
 dependencies {
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.android.support:cardview-v7:21.0.3'
     compile 'com.google.android.gms:play-services-fitness:6.5.87'
+    compile('com.crashlytics.sdk.android:crashlytics:2.2.1@aar') {
+        transitive = true;
+    }
 }
 
 apply plugin: 'android-unit-test'
