@@ -30,7 +30,9 @@ public class NotificationService extends IntentService {
      */
     @Override
     protected void onHandleIntent(Intent intent) {
-        Goal goal = (Goal) intent.getExtras().getSerializable(FitCoachIntent.Extra.GOAL);
+        long goalId = intent.getExtras().getLong(FitCoachIntent.Extra.GOAL_ID, 0l);
+
+        Goal goal = GoalService.getInstance().get(goalId);
 
         if (goal == null) {
             return;

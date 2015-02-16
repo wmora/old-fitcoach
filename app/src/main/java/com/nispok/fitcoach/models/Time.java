@@ -1,13 +1,34 @@
 package com.nispok.fitcoach.models;
 
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.structure.cache.BaseCacheableModel;
+
 import java.io.Serializable;
 
-public class Time implements Serializable {
+@Table(value = Time.NAME)
+public class Time extends BaseCacheableModel implements Serializable {
+
+    public static final String NAME = "GoalNotificationTime";
 
     private static final long serialVersionUID = 1L;
 
-    private int hour = 19;
-    private int minute = 0;
+    @Column(columnType = Column.PRIMARY_KEY_AUTO_INCREMENT)
+    Long id = 0l;
+
+    @Column(notNull = true)
+    Integer hour = 19;
+
+    @Column(notNull = true)
+    Integer minute = 0;
+
+    public Time() {
+        super();
+    }
+
+    public Long getId() {
+        return id;
+    }
 
     public int getHour() {
         return hour;

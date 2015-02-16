@@ -1,22 +1,39 @@
 package com.nispok.fitcoach.models;
 
-import com.nispok.fitcoach.R;
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.ForeignKeyAction;
+import com.raizlabs.android.dbflow.annotation.ForeignKeyReference;
+import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.structure.cache.BaseCacheableModel;
 
 import java.io.Serializable;
 
-import static com.nispok.fitcoach.utils.ResourcesUtils.getString;
-
-public class GoalNotification implements Serializable {
+@Table
+public class GoalNotification extends BaseCacheableModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Time time;
-    private String title;
-    private String message;
+    @Column(columnType = Column.PRIMARY_KEY_AUTO_INCREMENT)
+    Long id = 0l;
+
+    @Column(columnType = Column.FOREIGN_KEY, onDelete = ForeignKeyAction.CASCADE,
+            onUpdate = ForeignKeyAction.CASCADE,
+            references = {@ForeignKeyReference(columnType = Long.class,
+                    columnName = "timeId", foreignColumnName = "id")})
+    Time time;
+
+    @Column(notNull = true)
+    String title;
+
+    @Column(notNull = true)
+    String message;
 
     public GoalNotification() {
-        time = new Time();
-        message = getString(R.string.goal_notification_message);
+        super();
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public Time getTime() {

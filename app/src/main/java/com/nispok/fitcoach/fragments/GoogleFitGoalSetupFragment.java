@@ -80,7 +80,7 @@ public class GoogleFitGoalSetupFragment extends Fragment {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_save) {
-            goal.save();
+            goal.save(false);
             listener.onGoalSetupFinished();
             return true;
         }

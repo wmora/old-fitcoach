@@ -98,7 +98,7 @@ public class GoalDialogFragment extends DialogFragment {
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goal.setValue(Integer.parseInt(goalInput.getText().toString()));
+                goal.setValue(Double.parseDouble(goalInput.getText().toString()));
                 listener.onGoalChanged(goal);
                 GoalDialogFragment.this.dismiss();
             }

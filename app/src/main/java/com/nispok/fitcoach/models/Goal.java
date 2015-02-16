@@ -1,24 +1,44 @@
 package com.nispok.fitcoach.models;
 
+import com.nispok.fitcoach.databases.FitCoachDatabase;
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.ForeignKeyAction;
+import com.raizlabs.android.dbflow.annotation.ForeignKeyReference;
+import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.structure.cache.BaseCacheableModel;
+
 import java.io.Serializable;
 
-public class Goal implements Serializable {
+@Table(databaseName = FitCoachDatabase.NAME)
+public class Goal extends BaseCacheableModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String id = "";
-    private String name = "";
-    private int value = 0;
-    private GoalType type = GoalType.ACTIVE_TIME;
-    private GoalFrequency frequency = GoalFrequency.DAILY;
-    private GoalNotification notification = new GoalNotification();
+    @Column(columnType = Column.PRIMARY_KEY_AUTO_INCREMENT)
+    Long id = 0l;
 
-    public String getId() {
-        return id;
+    @Column(notNull = true)
+    String name;
+
+    @Column
+    Double value = 0.0;
+
+    private GoalType type = GoalType.ACTIVE_TIME;
+
+    private GoalFrequency frequency = GoalFrequency.DAILY;
+
+    @Column(columnType = Column.FOREIGN_KEY, onDelete = ForeignKeyAction.CASCADE,
+            onUpdate = ForeignKeyAction.CASCADE,
+            references = {@ForeignKeyReference(columnType = Long.class,
+                    columnName = "notificationId", foreignColumnName = "id")})
+    GoalNotification notification = new GoalNotification();
+
+    public Goal() {
+        super();
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public Long getId() {
+        return id;
     }
 
     /**
@@ -38,14 +58,14 @@ public class Goal implements Serializable {
     /**
      * @param value the value of this {@link com.nispok.fitcoach.models.Goal}
      */
-    public void setValue(int value) {
+    public void setValue(Double value) {
         this.value = value;
     }
 
     /**
      * @return the value of this {@link com.nispok.fitcoach.models.Goal}
      */
-    public int getValue() {
+    public Double getValue() {
         return value;
     }
 
@@ -85,14 +105,7 @@ public class Goal implements Serializable {
         return notification;
     }
 
-    public void setNotification(GoalNotification notifications) {
-        this.notification = notifications;
-    }
-
-    /**
-     * Saves this {@link com.nispok.fitcoach.models.Goal} in local persistence
-     */
-    public void save() {
-        //TODO: Implement me!
+    public void setNotification(GoalNotification notification) {
+        this.notification = notification;
     }
 }

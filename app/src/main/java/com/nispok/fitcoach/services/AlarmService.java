@@ -32,7 +32,7 @@ public class AlarmService extends BaseService {
 
     private PendingIntent createAlarmPendingIntent(int requestCode, Goal goal) {
         Intent intent = new Intent(context, AlarmReceiver.class);
-        intent.putExtra(FitCoachIntent.Extra.GOAL, goal);
+        intent.putExtra(FitCoachIntent.Extra.GOAL_ID, goal);
         return PendingIntent.getBroadcast(context, requestCode, intent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
     }

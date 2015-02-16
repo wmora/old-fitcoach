@@ -1,9 +1,10 @@
 package com.nispok.fitcoach.services;
 
-import com.nispok.fitcoach.intents.FitCoachIntent;
 import com.nispok.fitcoach.models.Goal;
 import com.nispok.fitcoach.models.GoalNotification;
 import com.nispok.fitcoach.models.Time;
+import com.raizlabs.android.dbflow.sql.builder.Condition;
+import com.raizlabs.android.dbflow.sql.language.Select;
 
 public class GoalService extends BaseService {
 
@@ -23,15 +24,24 @@ public class GoalService extends BaseService {
      */
     public Goal createWaterGoal() {
         Goal waterGoal = new Goal();
-        waterGoal.setId("water_goal");
-        GoalNotification goalNotification = waterGoal.getNotification();
+        GoalNotification goalNotification = new GoalNotification();
         Time time = new Time();
         time.setHour(14);
         time.setMinute(0);
         goalNotification.setTime(time);
         goalNotification.setTitle("Drink water!");
         goalNotification.setMessage("Remember to drink 2 liters of water!");
-        AlarmService.getInstance().createAlarm(FitCoachIntent.RequestCode.WATER_REMINDER, waterGoal);
+        waterGoal.setName("Drink 2 liters of water");
+        waterGoal.setValue(2.0);
+        waterGoal.setNotification(goalNotification);
+        waterGoal.save(false);
+        AlarmService.getInstance().createAlarm(waterGoal.getId().hashCode(), waterGoal);
         return waterGoal;
+    }
+
+    public Goal get(long id) {
+        return new Select().from(Goal.class)
+                .where(Condition.column("id").is(id))
+                .querySingle();
     }
 }

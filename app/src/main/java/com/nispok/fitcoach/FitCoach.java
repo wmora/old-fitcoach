@@ -18,7 +18,6 @@ public class FitCoach extends Application {
         Fabric.with(this, new Crashlytics());
         FlowManager.init(this);
         application = this;
-        GoalService.getInstance().createWaterGoal();
     }
 
     @Override
