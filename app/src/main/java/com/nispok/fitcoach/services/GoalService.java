@@ -39,6 +39,11 @@ public class GoalService extends BaseService {
         return waterGoal;
     }
 
+    /**
+     * Gets a {@link com.nispok.fitcoach.models.Goal} with the given {@code id}
+     * @param id goal ID
+     * @return a {@link com.nispok.fitcoach.models.Goal} with the given ID, {@code null} otherwise
+     */
     public Goal get(long id) {
         return new Select().from(Goal.class)
                 .where(Condition.column("id").is(id))
