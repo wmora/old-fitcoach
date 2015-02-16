@@ -16,7 +16,7 @@ public class WelcomeActivity extends GoogleFitnessClientActivity
         super.onCreate(savedInstanceState);
 
         if (isAuthorizedForGoogleFit()) {
-            goToGoalSetupActivity();
+            goToHomeActivity();
         }
 
         setTitle(R.string.welcome);
@@ -30,13 +30,7 @@ public class WelcomeActivity extends GoogleFitnessClientActivity
 
     @Override
     protected void onConnectionSuccess() {
-        goToGoalSetupActivity();
-    }
-
-    private void goToGoalSetupActivity() {
-        Intent intent = new Intent(getApplicationContext(), GoogleFitGoalSetupActivity.class);
-        startActivity(intent);
-        finish();
+        goToHomeActivity();
     }
 
     @Override
@@ -52,6 +46,12 @@ public class WelcomeActivity extends GoogleFitnessClientActivity
     @Override
     public void onSignInSkipped() {
         // User doesn't want to use Google Fit :(
+        goToHomeActivity();
+    }
+
+    private void goToHomeActivity() {
+        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+        startActivity(intent);
         finish();
     }
 }
