@@ -1,12 +1,13 @@
 package com.nispok.fitcoach.models;
 
+import com.nispok.fitcoach.databases.FitCoachDatabase;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.structure.cache.BaseCacheableModel;
 
 import java.io.Serializable;
 
-@Table(value = Time.NAME)
+@Table(value = Time.NAME, databaseName = FitCoachDatabase.NAME)
 public class Time extends BaseCacheableModel implements Serializable {
 
     public static final String NAME = "GoalNotificationTime";

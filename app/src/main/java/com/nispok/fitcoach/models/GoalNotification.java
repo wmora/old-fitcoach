@@ -1,5 +1,6 @@
 package com.nispok.fitcoach.models;
 
+import com.nispok.fitcoach.databases.FitCoachDatabase;
 import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.ForeignKeyAction;
 import com.raizlabs.android.dbflow.annotation.ForeignKeyReference;
@@ -8,7 +9,7 @@ import com.raizlabs.android.dbflow.structure.cache.BaseCacheableModel;
 
 import java.io.Serializable;
 
-@Table
+@Table(databaseName = FitCoachDatabase.NAME)
 public class GoalNotification extends BaseCacheableModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
