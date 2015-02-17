@@ -6,6 +6,8 @@ import com.nispok.fitcoach.models.Time;
 import com.raizlabs.android.dbflow.sql.builder.Condition;
 import com.raizlabs.android.dbflow.sql.language.Select;
 
+import java.util.List;
+
 public class GoalService extends BaseService {
 
     private static GoalService instance;
@@ -48,5 +50,13 @@ public class GoalService extends BaseService {
         return new Select().from(Goal.class)
                 .where(Condition.column("id").is(id))
                 .querySingle();
+    }
+
+    /**
+     * Returns all goals
+     * @return all {@link com.nispok.fitcoach.models.Goal}s
+     */
+    public List<Goal> getAll() {
+        return new Select().from(Goal.class).queryList();
     }
 }

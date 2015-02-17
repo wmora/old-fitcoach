@@ -1,28 +1,41 @@
 package com.nispok.fitcoach.services;
 
+import com.nispok.fitcoach.databases.FitCoachDatabase;
 import com.nispok.fitcoach.models.Goal;
 import com.nispok.fitcoach.models.GoalNotification;
 import com.nispok.fitcoach.models.Time;
+import com.raizlabs.android.dbflow.config.FlowManager;
 
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+
+import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertNull;
+import static junit.framework.Assert.assertTrue;
 
 @RunWith(RobolectricTestRunner.class)
 public class GoalServiceTest {
 
     private Goal goalMock;
 
+    @Before
+    public void setUp() {
+        FlowManager.init(Robolectric.application);
+        FlowManager.getDatabase(FitCoachDatabase.NAME).getWritableDatabase().acquireReference();
+    }
+
     @After
     public void tearDown() {
-        if (goalMock != null) {
-            goalMock.delete(false);
-        }
+        FlowManager.getDatabase(FitCoachDatabase.NAME).getWritableDatabase().releaseReference();
+        FlowManager.getDatabase(FitCoachDatabase.NAME).reset(Robolectric.application);
+        FlowManager.destroy();
     }
 
     private void createGoalMock() {
@@ -58,6 +71,25 @@ public class GoalServiceTest {
     @Test
     public void testGetGoalWithInvalidIdShouldReturnNull() {
         assertNull(GoalService.getInstance().get(1l));
+    }
+
+    public void testGetAllShouldReturnAllStoredGoals() {
+        int numberOfGoals = 3;
+
+        for (int i = 0; i < numberOfGoals; i++) {
+            createGoalMock();
+        }
+
+        List<Goal> goals = GoalService.getInstance().getAll();
+
+        assertEquals(goals.size(), numberOfGoals);
+    }
+
+    public void testGetAllWithoutStoredGoalsShouldReturnEmptyList() {
+        List<Goal> goals = GoalService.getInstance().getAll();
+
+        assertNotNull(goals);
+        assertTrue(goals.isEmpty());
     }
 
 }
