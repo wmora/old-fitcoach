@@ -37,11 +37,16 @@ public class AlarmService extends BaseService {
                 PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
-    private Calendar getAlarmCalendar(Time time) {
+    protected Calendar getAlarmCalendar(Time time) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY, time.getHour());
         calendar.set(Calendar.MINUTE, time.getMinute());
+
+        if (calendar.getTimeInMillis() < System.currentTimeMillis()) {
+            calendar.add(Calendar.DATE, 1);
+        }
+
         return calendar;
     }
 
