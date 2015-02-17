@@ -1,6 +1,10 @@
 sudo: false
 language: android
 
+# This is needed for Hugo: See: https://github.com/JakeWharton/hugo/issues/76
+jdk:
+  - oraclejdk8
+
 env:
   matrix:
       - ANDROID_TARGET=android-21  ANDROID_ABI=armeabi-v7a
