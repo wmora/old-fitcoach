@@ -2,7 +2,6 @@ package com.nispok.fitcoach;
 
 import android.app.Application;
 
-import com.nispok.fitcoach.services.GoalService;
 import com.crashlytics.android.Crashlytics;
 import com.raizlabs.android.dbflow.config.FlowManager;
 
