@@ -85,6 +85,7 @@ def createCrashlyticsProperties(Project project, variant) {
 def dbFlowVersion = "1.5.1"
 
 dependencies {
+    compile project(':floatingactionbutton')
     compile 'com.android.support:appcompat-v7:21.0.3'
     compile 'com.android.support:cardview-v7:21.0.3'
     compile 'com.android.support:recyclerview-v7:21.0.3'
