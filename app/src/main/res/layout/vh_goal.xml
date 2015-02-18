@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/notification_time"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/two_line_item_height">
+
+    <TextView
+        android:id="@+id/goal_name"
+        style="@style/AppTheme.Text.Subhead"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@id/goal_avatar"
+        android:layout_toRightOf="@id/goal_avatar"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxLines="2"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp" />
+</RelativeLayout>
