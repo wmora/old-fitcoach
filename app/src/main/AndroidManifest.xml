@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.GoogleFitGoalSetupActivity"
+            android:name=".activities.GoalSetupActivity"
             android:label="@string/title_activity_google_fit_goal_setup" />
         <activity
             android:name=".activities.HomeActivity"

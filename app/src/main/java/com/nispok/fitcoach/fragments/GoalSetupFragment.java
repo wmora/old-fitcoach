@@ -19,9 +19,9 @@ import android.widget.TextView;
 import com.nispok.fitcoach.R;
 import com.nispok.fitcoach.models.Goal;
 
-public class GoogleFitGoalSetupFragment extends Fragment {
+public class GoalSetupFragment extends Fragment {
 
-    public static final String TAG = GoogleFitGoalSetupFragment.class.getSimpleName();
+    public static final String TAG = GoalSetupFragment.class.getSimpleName();
 
     private static final String SAVED_GOAL = "SAVED_GOAL";
 
@@ -55,7 +55,7 @@ public class GoogleFitGoalSetupFragment extends Fragment {
 
         setHasOptionsMenu(true);
 
-        return inflater.inflate(R.layout.fragment_google_fit_goal_setup, container, false);
+        return inflater.inflate(R.layout.fragment_goal_setup, container, false);
     }
 
     @Override
@@ -68,7 +68,7 @@ public class GoogleFitGoalSetupFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_google_fit_goal_setup, menu);
+        inflater.inflate(R.menu.menu_goal_setup, menu);
     }
 
     @Override

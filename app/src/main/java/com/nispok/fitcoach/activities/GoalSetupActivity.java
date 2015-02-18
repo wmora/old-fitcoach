@@ -5,12 +5,12 @@ import android.os.Bundle;
 
 import com.nispok.fitcoach.R;
 import com.nispok.fitcoach.dialogs.GoalDialogFragment;
-import com.nispok.fitcoach.fragments.GoogleFitGoalSetupFragment;
+import com.nispok.fitcoach.fragments.GoalSetupFragment;
 import com.nispok.fitcoach.models.Goal;
 
-public class GoogleFitGoalSetupActivity extends GoogleFitnessClientActivity
+public class GoalSetupActivity extends GoogleFitnessClientActivity
         implements GoalDialogFragment.GoalDialogFragmentInterface,
-        GoogleFitGoalSetupFragment.GoogleFitGoalSetupFragmentInterface {
+        GoalSetupFragment.GoogleFitGoalSetupFragmentInterface {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,8 +18,8 @@ public class GoogleFitGoalSetupActivity extends GoogleFitnessClientActivity
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new GoogleFitGoalSetupFragment(),
-                            GoogleFitGoalSetupFragment.TAG)
+                    .add(R.id.container, new GoalSetupFragment(),
+                            GoalSetupFragment.TAG)
                     .commit();
         }
     }
@@ -45,8 +45,8 @@ public class GoogleFitGoalSetupActivity extends GoogleFitnessClientActivity
 
     @Override
     public void onGoalChanged(Goal goal) {
-        GoogleFitGoalSetupFragment f = (GoogleFitGoalSetupFragment) getSupportFragmentManager().
-                findFragmentByTag(GoogleFitGoalSetupFragment.TAG);
+        GoalSetupFragment f = (GoalSetupFragment) getSupportFragmentManager().
+                findFragmentByTag(GoalSetupFragment.TAG);
 
         if (f != null) {
             f.onGoalChanged(goal);
