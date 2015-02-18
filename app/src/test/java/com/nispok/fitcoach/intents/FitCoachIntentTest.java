@@ -7,8 +7,8 @@ import static junit.framework.Assert.assertEquals;
 public class FitCoachIntentTest {
 
     @Test
-    public void testWaterReminderRequestCodeShouldBe10000000() {
-        assertEquals(FitCoachIntent.RequestCode.ADD_GOAL, 10000000);
+    public void testWaterReminderRequestCodeShouldBe10000() {
+        assertEquals(FitCoachIntent.RequestCode.ADD_GOAL, 10000);
     }
 
     @Test
