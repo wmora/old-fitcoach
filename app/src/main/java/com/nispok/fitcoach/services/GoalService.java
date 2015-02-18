@@ -43,6 +43,7 @@ public class GoalService extends BaseService {
 
     /**
      * Gets a {@link com.nispok.fitcoach.models.Goal} with the given {@code id}
+     *
      * @param id goal ID
      * @return a {@link com.nispok.fitcoach.models.Goal} with the given ID, {@code null} otherwise
      */
@@ -54,6 +55,7 @@ public class GoalService extends BaseService {
 
     /**
      * Returns all goals
+     *
      * @return all {@link com.nispok.fitcoach.models.Goal}s
      */
     public List<Goal> getAll() {
