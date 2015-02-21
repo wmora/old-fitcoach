@@ -32,7 +32,7 @@ public class NotificationService extends IntentService {
     protected void onHandleIntent(Intent intent) {
         long goalId = intent.getExtras().getLong(FitCoachIntent.Extra.GOAL_ID, 0l);
 
-        Goal goal = GoalService.getInstance().get(goalId);
+        Goal goal = GoalService.get(goalId);
 
         if (goal == null) {
             return;
@@ -50,8 +50,8 @@ public class NotificationService extends IntentService {
 
         builder.setContentIntent(dummyIntent);
 
-        NotificationManager notificationManager = SystemService.getInstance()
-                .getNotificationSystemService();
+        NotificationManager notificationManager = SystemService
+                .getNotificationSystemService(getApplicationContext());
 
         notificationManager.notify(goal.getId().hashCode(), builder.build());
     }

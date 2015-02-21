@@ -59,7 +59,7 @@ public class GoalServiceTest {
 
         long validId = goalMock.getId();
 
-        Goal goal = GoalService.getInstance().get(validId);
+        Goal goal = GoalService.get(validId);
 
         assertNotNull(goal);
         assertEquals(goal.getId(), goalMock.getId());
@@ -70,7 +70,7 @@ public class GoalServiceTest {
 
     @Test
     public void testGetGoalWithInvalidIdShouldReturnNull() {
-        assertNull(GoalService.getInstance().get(1l));
+        assertNull(GoalService.get(1l));
     }
 
     public void testGetAllShouldReturnAllStoredGoals() {
@@ -80,13 +80,13 @@ public class GoalServiceTest {
             createGoalMock();
         }
 
-        List<Goal> goals = GoalService.getInstance().getAll();
+        List<Goal> goals = GoalService.getAll();
 
         assertEquals(goals.size(), numberOfGoals);
     }
 
     public void testGetAllWithoutStoredGoalsShouldReturnEmptyList() {
-        List<Goal> goals = GoalService.getInstance().getAll();
+        List<Goal> goals = GoalService.getAll();
 
         assertNotNull(goals);
         assertTrue(goals.isEmpty());

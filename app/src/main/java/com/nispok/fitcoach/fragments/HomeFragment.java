@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
         RecyclerView goalListView = (RecyclerView) view.findViewById(R.id.goal_list);
         goalListView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        GoalListViewAdapter adapter = new GoalListViewAdapter(GoalService.getInstance().getAll());
+        GoalListViewAdapter adapter = new GoalListViewAdapter(GoalService.getAll());
         goalListView.setAdapter(adapter);
     }
 

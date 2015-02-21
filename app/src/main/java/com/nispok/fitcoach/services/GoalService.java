@@ -1,7 +1,5 @@
 package com.nispok.fitcoach.services;
 
-import com.nispok.fitcoach.events.BusProvider;
-import com.nispok.fitcoach.events.GoalEvents;
 import com.nispok.fitcoach.models.Goal;
 import com.nispok.fitcoach.models.GoalNotification;
 import com.nispok.fitcoach.models.Time;
@@ -10,23 +8,14 @@ import com.raizlabs.android.dbflow.sql.language.Select;
 
 import java.util.List;
 
-public class GoalService extends BaseService {
-
-    private static GoalService instance;
-
-    public static GoalService getInstance() {
-        if (instance == null) {
-            instance = new GoalService();
-        }
-        return instance;
-    }
+public class GoalService {
 
     /**
      * Creates a goal of drinking water everyday and schedules a notification at a fixed time
      *
      * @return the created {@link com.nispok.fitcoach.models.Goal}
      */
-    public Goal createWaterGoal() {
+    public static Goal createWaterGoal() {
         Goal waterGoal = new Goal();
         GoalNotification goalNotification = new GoalNotification();
         Time time = new Time();
@@ -38,8 +27,7 @@ public class GoalService extends BaseService {
         waterGoal.setName("Drink 2 liters of water");
         waterGoal.setValue(2.0);
         waterGoal.setNotification(goalNotification);
-
-        save(waterGoal);
+        waterGoal.save(false);
 
         return waterGoal;
     }
@@ -50,7 +38,7 @@ public class GoalService extends BaseService {
      * @param id goal ID
      * @return a {@link com.nispok.fitcoach.models.Goal} with the given ID, {@code null} otherwise
      */
-    public Goal get(long id) {
+    public static Goal get(long id) {
         return new Select().from(Goal.class)
                 .where(Condition.column("id").is(id))
                 .querySingle();
@@ -61,18 +49,8 @@ public class GoalService extends BaseService {
      *
      * @return all {@link com.nispok.fitcoach.models.Goal}s
      */
-    public List<Goal> getAll() {
+    public static List<Goal> getAll() {
         return new Select().from(Goal.class).queryList();
     }
 
-    /**
-     * Saves a {@link com.nispok.fitcoach.models.Goal} and dispatches a
-     * {@link com.nispok.fitcoach.events.GoalEvents.GoalSavedEvent}
-     *
-     * @param goal the {@link com.nispok.fitcoach.models.Goal} to be saved
-     */
-    public void save(Goal goal) {
-        goal.save(false);
-        BusProvider.bus().post(new GoalEvents.GoalSavedEvent(goal));
-    }
 }

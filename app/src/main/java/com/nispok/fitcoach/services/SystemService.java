@@ -4,28 +4,27 @@ import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.content.Context;
 
-public class SystemService extends BaseService {
-
-    private static SystemService instance;
-
-    public static SystemService getInstance() {
-        if (instance == null) {
-            instance = new SystemService();
-        }
-        return instance;
-    }
+public class SystemService {
 
     /**
      * Returns a system-level {@link android.app.AlarmManager} for receiving intents at the
      * time of your choosing.
      *
-     * @return the {@link android.app.AlarmManager}
+     * @param context
+     * @return a system-level {@link android.app.AlarmManager}
      */
-    public AlarmManager getAlarmSystemService() {
+    public static AlarmManager getAlarmSystemService(Context context) {
         return (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
     }
 
-    public NotificationManager getNotificationSystemService() {
+    /**
+     * Returns a system-level {@link android.app.NotificationManager} for telling the user that
+     * something has happened in the background.
+     *
+     * @param context
+     * @return a system-level {@link android.app.NotificationManager}
+     */
+    public static NotificationManager getNotificationSystemService(Context context) {
         return (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
     }
 }
