@@ -1,5 +1,7 @@
 package com.nispok.fitcoach.services;
 
+import com.nispok.fitcoach.events.BusProvider;
+import com.nispok.fitcoach.events.GoalEvents;
 import com.nispok.fitcoach.models.Goal;
 import com.nispok.fitcoach.models.GoalNotification;
 import com.nispok.fitcoach.models.Time;
@@ -36,8 +38,9 @@ public class GoalService extends BaseService {
         waterGoal.setName("Drink 2 liters of water");
         waterGoal.setValue(2.0);
         waterGoal.setNotification(goalNotification);
-        waterGoal.save(false);
-        AlarmService.getInstance().createAlarm(waterGoal.getId().hashCode(), waterGoal);
+
+        save(waterGoal);
+
         return waterGoal;
     }
 
@@ -60,5 +63,16 @@ public class GoalService extends BaseService {
      */
     public List<Goal> getAll() {
         return new Select().from(Goal.class).queryList();
+    }
+
+    /**
+     * Saves a {@link com.nispok.fitcoach.models.Goal} and dispatches a
+     * {@link com.nispok.fitcoach.events.GoalEvents.GoalSavedEvent}
+     *
+     * @param goal the {@link com.nispok.fitcoach.models.Goal} to be saved
+     */
+    public void save(Goal goal) {
+        goal.save(false);
+        BusProvider.bus().post(new GoalEvents.GoalSavedEvent(goal));
     }
 }
